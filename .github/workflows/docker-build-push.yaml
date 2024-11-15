@@ -15,6 +15,7 @@ jobs:
       image_name: autoremove-torrents
       registry: ghcr.io
       should_push: ${{ github.ref_name == 'main' }}
+      platforms: linux/amd64,linux/arm64
     secrets:
       DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
       DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
