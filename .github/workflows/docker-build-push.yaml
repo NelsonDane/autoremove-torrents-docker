@@ -1,0 +1,20 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-workflow-dockerhub-build-push:
+    uses: NelsonDane/Custom-GitHub-Actions/.github/workflows/docker-registry-build-push.yml@e64ec758b6758d58955cab25a0e330f9bab380dd
+    permissions:
+      contents: read
+      packages: write
+    with:
+      image_name: autoremove-torrents
+      registry: ghcr.io
+      should_push: ${{ github.ref_name == 'main' }}
+    secrets:
+      DOCKER_REGISTRY_USERNAME: ${{ github.repository_owner }}
+      DOCKER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
