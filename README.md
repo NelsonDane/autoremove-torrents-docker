@@ -12,7 +12,7 @@ services:
     container_name: autoremove-torrents
     image: ghcr.io/nelsondane/autoremove-torrents:latest
     environment:
-      CRON_SCHEDULE: "* * * * *"
+      CRON_SCHEDULE=* * * * *
     volumes:
       - ./config.yml:/app/config.yml
       - ./logs:/app/logs
